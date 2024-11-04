@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(to right, #80B9E6, #566392);
+
+
+           
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: aliceblue;
+        }
+        .copyCode{
+            padding: 20px;
+            background: transparent;
+            border: none;
+            margin-top: 20px;
+        }
+        section{
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 200px;
+        }
+        .btn button{
+            padding: 10px 30px;
+            color: aliceblue;
+            
+            background-color: red;
+            margin: 20px;
+            border-radius: 20px;
+            
+        }
+        .btn{
+            display: flex;
+            padding: 20px;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        
+
+
+
+    </style>
+</head>
+<body>
+    <section>
+        <div class="btn">
+            <button id="button1">hi</button>
+            <button id="button2">hi2</button>
+        </div>
+        <h2>Have The Color</h2>
+        <div class="copyCode">
+            background-image: linear-gradient(to right, #8E1D28, #566392);
+
+        </div>
+
+    </section>
+    <script>
+        let btn1=document.getElementById("button1")
+        let btn2=document.getElementById("button2")
+        let copyCode = document.querySelector(".copyCode")
+        let rgb1="#fff"
+        let rgb2="#000"
+        const hexaColor=()=>{
+            let hexCol='0123456789ABCDEF'
+            let color="#"
+            for (let i = 0; i < 6; i++) {
+                
+                color=color+ hexCol[Math.floor(Math.random()*16)]
+                
+                
+            }
+            
+            console.log(color);
+            return color
+            
+
+        }
+        const handlebutton1=()=>{
+            rgb1=hexaColor()
+            document.body.style.backgroundImage= `linear-gradient(to right, ${rgb1}, ${rgb2})`
+            console.log(document.body.style.backgroundImage);
+            btn1.innerText=rgb1
+            copyCode.innerHTML=`linear-gradient(to right, ${rgb1}, ${rgb2})`
+            btn1.style.background=rgb1
+            btn1.style.color="#000"
+            btn1.style.fontWeight="900" 
+
+
+
+
+
+
+        }
+        const handlebutton2=()=>{
+            rgb2=hexaColor()
+            document.body.style.backgroundImage= `linear-gradient(to right, ${rgb1}, ${rgb2})`
+            console.log(document.body.style.backgroundImage);
+            btn2.innerText=rgb2
+            copyCode.innerHTML=`linear-gradient(to right, ${rgb1}, ${rgb2})`
+            btn2.style.background=rgb2
+            btn2.style.color="#000"
+            btn2.style.fontWeight="900" 
+
+
+
+        }
+        btn1.addEventListener("click",handlebutton1)
+        btn2.addEventListener("click",handlebutton2)
+        copyCode.addEventListener("click",()=>{
+            navigator.clipboard.writeText(copyCode.innerText)
+            alert("copied Succsesfully :"+copyCode.innerText)
+        })
+
+
+    </script>
+</body>
+</html>
